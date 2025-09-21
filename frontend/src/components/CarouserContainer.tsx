@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Result } from "../api/fetchMovies";
 
@@ -11,8 +11,9 @@ export default function CarouserContainer({
 	category,
 	movies,
 }: CarouserContainerProps) {
-	const carouselRef = useRef<HTMLDivElement>(null);
 
+
+	const carouselRef = useRef<HTMLDivElement>(null);
 	const scrollLeft = () => {
 		if (carouselRef.current) {
 			carouselRef.current.scrollBy({
@@ -33,10 +34,10 @@ export default function CarouserContainer({
 	
 	return (
 		<div>
-			<h2 className="text-2xl">{category}</h2>
+			<h2 className="sm:text-3xl sm:font-semibold">{category}</h2>
 			<div className="relative">
 				<button
-					className="absolute -left-3 top-20 cursor-pointer btn  btn-soft rounded-full btn-secondary py-1 px-2  z-50"
+					className="absolute -left-3 top-2/5 size-8 sm:size-10 cursor-pointer btn  btn-soft rounded-full btn-secondary py-1 px-2  z-50"
 					onClick={scrollLeft}
 				>
 					<ArrowLeft />
@@ -47,7 +48,7 @@ export default function CarouserContainer({
 					ref={carouselRef}
 				>
 					{movies?.map((movie) => (
-						<div className="carousel-item relative h-40 aspect-video rounded-box overflow-hidden cursor-pointer group  transition-transform" key={movie.id}>
+						<div className="carousel-item relative h-24 sm:h-40 aspect-video rounded-box overflow-hidden cursor-pointer group  transition-transform" key={movie.id}>
 							<img
 								src={`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`}
 								alt=""
@@ -64,7 +65,7 @@ export default function CarouserContainer({
 				</div>
 
 				<button
-					className="absolute -right-3 top-20 cursor-pointer btn btn-soft rounded-full btn-secondary py-1 px-2 z-50"
+					className="absolute -right-3 top-2/5 size-8 sm:size-10 cursor-pointer btn btn-soft rounded-full btn-secondary py-1 px-2 z-50"
 					onClick={scrollRight}
 				>
 					<ArrowRight />
