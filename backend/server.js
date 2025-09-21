@@ -8,12 +8,14 @@ import cookieParser from "cookie-parser";
 
 dotenv.config();
 
-const { PORT } = process.env;
+const { PORT, FRONTEND_URL } = process.env;
 
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+	origin: FRONTEND_URL
+}));
 app.use(cookieParser())
 
 app.use("/api/movies", moviesRoutes);
