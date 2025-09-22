@@ -30,9 +30,9 @@ export interface Result {
 	vote_count: number;
 }
 
-export const fetchTrendingMovies = async (): Promise<MovieApi> => {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+export const fetchTrendingMovies = async (): Promise<MovieApi> => {
 	const { data } = await axios.get(`${BACKEND_URL}/api/movies/trending/week`);
 
 	return data;
@@ -41,9 +41,22 @@ export const fetchTrendingMovies = async (): Promise<MovieApi> => {
 export const fetchMovieLists = async (
 	category: "popular" | "now_playing" | "top_rated" | "upcoming"
 ): Promise<MovieApi> => {
+	const { data } = await axios.get(
+		`${BACKEND_URL}/api/movies/movie_lists/${category}`
+	);
 
-	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-	const { data } = await axios.get(`${BACKEND_URL}/api/movies/movie_lists/${category}`);
-  
+	return data;
+};
+
+export const fetchMoviesByGenre = async (
+	genre_id: number
+): Promise<MovieApi> => {
+	
+	const { data } = await axios.get(`${BACKEND_URL}/api/movies/discover`, {
+		params: {
+			with_genres: genre_id,
+		},
+	});
+
 	return data;
 };

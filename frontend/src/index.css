@@ -37,4 +37,6 @@
 
 @theme {
 	--font-outfit: "Outfit", "sans-serif";
+	--aspect-poster: 2/3;
+	--aspect-hero: 2.35/1;
 }

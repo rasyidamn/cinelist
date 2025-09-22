@@ -26,6 +26,7 @@ app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
 	res.send("halo");
+	
 });
 
 connectDB().then(() => {
