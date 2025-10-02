@@ -51,12 +51,24 @@ export const fetchMovieLists = async (
 export const fetchMoviesByGenre = async (
 	genre_id: number
 ): Promise<MovieApi> => {
-	
 	const { data } = await axios.get(`${BACKEND_URL}/api/movies/discover`, {
 		params: {
 			with_genres: genre_id,
 		},
 	});
 
+	return data;
+};
+
+export const fetchMovieDetails = async (movie_id: string): Promise<any> => {
+	const { data } = await axios.get(`${BACKEND_URL}/api/movies/${movie_id}`);
+
+	return data;
+};
+
+export const fetchMovieTrailers = async (movie_id: string): Promise<any> => {
+	const { data } = await axios.get(
+		`${BACKEND_URL}/api/movies/${movie_id}/videos`
+	);
 	return data;
 };

@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import WatchListsPage from "../pages/WatchListsPage";
 import DiscoverPage from "../pages/DiscoverPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import MovieDetailsPage from "../pages/MovieDetailsPage";
 
 export const ROUTES: RouteObject[] = [
    {
@@ -21,6 +22,10 @@ export const ROUTES: RouteObject[] = [
          {
             path: "/discover",
             element: <DiscoverPage />
+         },
+         {
+            path: "/movie_details/:movie_id",
+            element: <MovieDetailsPage />
          },
          {
             path: "/*",

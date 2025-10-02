@@ -76,13 +76,9 @@ export const getMovieDetails = async (req, res) => {
 
 export const getMovieVideos = async (req, res) => {
 	const { movie_id } = req.params;
-	const url = `https://api.themoviedb.org/3/movie/${movie_id}/videos?language=en-US`;
-	const headers = {
-		accept: "application/json",
-		Authorization: ACCESS_TOKEN,
-	};
+	
 	try {
-		const response = await axios.get(url, { headers });
+		const response = await tmdbApi.get(`/movie/${movie_id}/videos?language=en-US`);
 		res.status(200).json({ success: true, data: response.data });
 	} catch (error) {
 		res.status(500).json({ success: false, message: error.message });

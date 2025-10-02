@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import type { Result } from "../api/fetchMovies";
 import { SliderLeft, SliderRight } from "./CarouserSlider";
+import { Link } from "react-router";
 
 interface CarouserContainerProps {
 	category: string;
@@ -41,7 +42,8 @@ export default function CarouserContainer({
 					ref={carouselRef}
 				>
 					{movies?.map((movie) => (
-						<div
+						<Link
+							to={`/movie_details/${movie.id}`}
 							className="carousel-item relative h-40 sm:h-72 aspect-poster rounded-box overflow-hidden cursor-pointer group  transition-transform"
 							key={movie.id}
 						>
@@ -57,7 +59,7 @@ export default function CarouserContainer({
 									{` (${movie.release_date.split("-")[0]})`}
 								</h3>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 
