@@ -1,9 +1,8 @@
-// import { useQuery } from "@tanstack/react-query"
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import { fetchMovieDetails } from "../api/fetchMovies";
 import { StarIcon } from "lucide-react";
-import TrailerModal from "../components/TrailerModal";
+// import TrailerModal from "../components/TrailerModal";
 
 export default function MovieDetailsPage() {
 	const { movie_id } = useParams<{ movie_id: string }>();
@@ -56,7 +55,7 @@ export default function MovieDetailsPage() {
 									<StarIcon className="text-amber-300" />{" "}
 									{movieDetails?.vote_average}
 								</div>
-                        <TrailerModal movieId={movieDetails?.id}/>
+                        {/* <TrailerModal movieId={movieDetails?.id}/> */}
 							</div>
 							<div>
 								<p className="text-lg">
